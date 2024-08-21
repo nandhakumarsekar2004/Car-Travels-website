@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Car - Mouli Car Travels</title>
+    <link rel="stylesheet" href="booking.css">
+
+    <style>
+        /* Popup styles */
+        #popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.5s;
+            text-align: center; /* Center the text */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+
+    <script>
+        function toggleDriverFields() {
+            var driverOption = document.getElementById("driver-option").value;
+            var aadharCardLabel = document.getElementById("aadhar-card-label");
+            var aadharCardField = document.getElementById("aadhar-card");
+            var licenseNumberLabel = document.getElementById("license-number-label");
+            var licenseNumberField = document.getElementById("license-number");
+            var driverOptionText = document.getElementById("driver-option-text");
+
+            if (driverOption === "with-driver") {
+                aadharCardLabel.style.display = "none";
+                aadharCardField.style.display = "none";
+                licenseNumberLabel.style.display = "none";
+                licenseNumberField.style.display = "none";
+                driverOptionText.innerHTML = "<strong>With Driver</strong>";
+            } else if (driverOption === "without-driver") {
+                aadharCardLabel.style.display = "block";
+                aadharCardField.style.display = "block";
+                licenseNumberLabel.style.display = "block";
+                licenseNumberField.style.display = "block";
+                driverOptionText.innerHTML = "<strong>Without Driver</strong>";
+            }
+        }
+
+        function showPopup(message) {
+            var popup = document.getElementById("popup");
+            var overlay = document.getElementById("overlay");
+            popup.innerHTML = message; // Set the message
+            popup.style.display = "block";
+            overlay.style.display = "block";
+        }
+
+        function hidePopup() {
+            var popup = document.getElementById("popup");
+            var overlay = document.getElementById("overlay");
+            popup.style.display = "none";
+            overlay.style.display = "none";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var form = document.forms["car-Booking-form"];
+            form.onsubmit = function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Simulate form submission
+                fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        showPopup("Your car was booked successfully!");
+                    } else {
+                        showPopup("Error: Please try again later.");
+                    }
+                })
+                .catch(error => {
+                    showPopup("Error: Please try again later.");
+                });
+            };
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Mouli Car Travels</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="booking.html">Book a Car</a></li>
+                <li><a href="blog.html">Cars</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="booking">
+        <center>
+        <h2>Make Your Trip</h2>
+        <form method="post" action="https://script.google.com/macros/s/AKfycbxWd7lNjKJL5X3Iu12wQFGWXS4MUeCW6S5l9J0R5GHOsaH7_epy8cXvAqmjDKf63ptEYw/exec" name="car-Booking-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="mobile">Mobile No:</label>
+            <input type="tel" id="mobile" name="mobile" required>
+            
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="pickup-location">Pick-Up Location:</label>
+            <input type="text" id="pickup-location" name="pickup-location" required>
+            
+            <label for="dropoff-location">Drop-Off Location:</label>
+            <input type="text" id="dropoff-location" name="dropoff-location" required>
+            
+            <label for="pickup-date">Pick-Up Date:</label>
+            <input type="date" id="pickup-date" name="pickup-date" required>
+            
+            <label for="dropoff-date">Drop-Off Date:</label>
+            <input type="date" id="dropoff-date" name="dropoff-date" required>
+            
+            <label for="pickup-time">Pick-Up Time:</label>
+            <input type="time" id="pickup-time" name="pickup-time" required>
+            
+            <label for="car-selection">Choose the Car:</label>
+            <div class="car-selection">
+                <div class="car-option">
+                    <img src="https://i.ibb.co/bmWvHbr/car.png" alt="Mahindra Xylo">
+                    <label>
+                        <input type="radio" name="car-selection" value="Mahindra Xylo" required>
+                        Mahindra Xylo
+                    </label>
+                </div>
+                <div class="car-option">
+                    <img src="https://i.ibb.co/HPXDCg3/1.png" alt="Tata Nexon">
+                    <label>
+                        <input type="radio" name="car-selection" value="tata-nexon">
+                        Tata Nexon
+                    </label>
+                </div>
+            </div>
+
+            <label for="driver-option">Car Driver Option:</label>
+            <select id="driver-option" name="driver-option" onchange="toggleDriverFields()" required>
+                <option value="with-driver">With Driver</option>
+                <option value="without-driver">Without Driver</option>
+            </select>
+            
+            <span class="driver-option-text" id="driver-option-text">
+                <strong>Select an option</strong>
+            </span>
+            
+            <label for="aadhar-card" id="aadhar-card-label" style="display: none;">Your Aadhar Card Number:</label>
+            <input type="text" id="aadhar-card" name="aadhar-card" style="display: none;">
+            
+            <label for="license-number" id="license-number-label" style="display: none;">License Number:</label>
+            <input type="text" id="license-number" name="license-number" style="display: none;">
+            
+            <button type="submit" id="submit-button">Submit</button>
+        </form>
+        </center>
+    </section>
+
+    <!-- Popup and Overlay -->
+    <div id="overlay" onclick="hidePopup()"></div>
+    <div id="popup"></div>
+
+    <script src="booking.js"></script>
+</body>
+</html>

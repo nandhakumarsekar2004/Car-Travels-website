@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Car - SMR Car Travels</title>
+    
+    <style>
+   /* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1517&q=80');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+/* Header */
+header {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Navigation */
+nav {
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding: 5px;
+    border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover {
+    color: #f0a500;
+    border-bottom: 2px solid #f0a500;
+}
+
+/* Booking form */
+.booking-form {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+.booking-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #fff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.booking-form label {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.booking-form input, .booking-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.5); /* Background color for form fields */
+}
+
+.booking-form button {
+    background: #f0a500;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.booking-form button:hover {
+    background: #e08e00;
+}
+
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+    }
+
+    .booking-form h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    nav ul li a {
+        font-size: 0.9em;
+    }
+
+    .booking-form h2 {
+        font-size: 1.2em;
+    }
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Basic form styling */
+form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8); /* Background color for form */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8); /* Ensure transparency */
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.car-selection {
+    margin: 10px 0;
+    color: #333;
+}
+
+.car-option {
+    display: inline-block;
+    width: calc(50% - 10px);
+    margin: 5px;
+    text-align: center;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.car-option img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.car-option label {
+    display: block;
+    font-weight: normal;
+    margin: 0;
+    font-size: 16px;
+}
+
+.driver-option-text {
+    display: block;
+    margin: 10px 0;
+    color: #007BFF;
+}
+
+/* Footer Styles */
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+    </style>
+    <script>
+        function toggleDriverFields() {
+            var driverOption = document.getElementById("driver-option").value;
+            var aadharCardLabel = document.getElementById("aadhar-card-label");
+            var aadharCardField = document.getElementById("aadhar-card");
+            var licenseNumberLabel = document.getElementById("license-number-label");
+            var licenseNumberField = document.getElementById("license-number");
+            var driverOptionText = document.getElementById("driver-option-text");
+            
+            if (driverOption === "with-driver") {
+                aadharCardLabel.style.display = "none";
+                aadharCardField.style.display = "none";
+                licenseNumberLabel.style.display = "none";
+                licenseNumberField.style.display = "none";
+                driverOptionText.innerHTML = "<strong>With Driver</strong>";
+            } else if (driverOption === "without-driver") {
+                aadharCardLabel.style.display = "block";
+                aadharCardField.style.display = "block";
+                licenseNumberLabel.style.display = "block";
+                licenseNumberField.style.display = "block";
+                driverOptionText.innerHTML = "<strong>Without Driver</strong>";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>SMR Car Travels</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="booking.html">Book a Car</a></li>
+                <li><a href="blog.html">Cars</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="booking">
+        <center>
+        <h2>Make Your Trip</h2>
+        <form method="post" action="https://script.google.com/macros/s/AKfycbzjqhIQLeqUKikvFzVkkdMJy72DaC-yJI7Nxw_Q-EbDBvSdmtqymctOzQVNpzXGGK1T_Q/exec" name="car-Booking-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="mobile">Mobile No:</label>
+            <input type="tel" id="mobile" name="mobile" required>
+            
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="pickup-location">Pick-Up Location:</label>
+            <input type="text" id="pickup-location" name="pickup-location" required>
+            
+            <label for="dropoff-location">Drop-Off Location:</label>
+            <input type="text" id="dropoff-location" name="dropoff-location" required>
+            
+            <label for="pickup-date">Pick-Up Date:</label>
+            <input type="date" id="pickup-date" name="pickup-date" required>
+            
+            <label for="dropoff-date">Drop-Off Date:</label>
+            <input type="date" id="dropoff-date" name="dropoff-date" required>
+            
+            <label for="pickup-time">Pick-Up Time:</label>
+            <input type="time" id="pickup-time" name="pickup-time" required>
+            
+            <label for="car-selection">Choose the Car:</label>
+            <div class="car-selection">
+                <div class="car-option">
+                    <img src="https://i.ibb.co/zstr437/2023-Suzuki-Ertiga.jpg" alt="Mahindra Xylo">
+                    <label>
+                        <input type="radio" name="car-selection" value="mahindra-xylo" required>
+                        Mahindra Xylo
+                    </label>
+                </div>
+                <div class="car-option">
+                    <img src="https://i.ibb.co/HPXDCg3/1.png" alt="Tata Nexon">
+                    <label>
+                        <input type="radio" name="car-selection" value="tata-nexon">
+                        Tata Nexon
+                    </label>
+                </div>
+            </div>
+
+            <label for="driver-option">Car Driver Option:</label>
+            <select id="driver-option" name="driver-option" onchange="toggleDriverFields()" required>
+                <option value="with-driver">With Driver</option>
+                <option value="without-driver">Without Driver</option>
+            </select>
+            
+            <span class="driver-option-text" id="driver-option-text">
+                <strong>Select an option</strong>
+            </span>
+            
+            <label for="aadhar-card" id="aadhar-card-label" style="display: none;">Your Aadhar Card Number:</label>
+            <input type="text" id="aadhar-card" name="aadhar-card" style="display: none;">
+            
+            <label for="license-number" id="license-number-label" style="display: none;">License Number:</label>
+            <input type="text" id="license-number" name="license-number" style="display: none;">
+            
+            <button type="submit" id="submit-button">Submit/Rent A Car Now</button>
+        </form>
+    </center>
+    </section>
+    
+    
+
+    <script src="booking.js"></script>
+</body>
+</html>

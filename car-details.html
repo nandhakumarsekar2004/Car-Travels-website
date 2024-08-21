@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details - Mouli Car Travels</title>
+    <link rel="stylesheet" href="car-details.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5); /* Gradient background */
+            animation: backgroundAnimation 15s ease infinite;
+        }
+
+        header {
+            background: #007bff;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .car-info {
+            margin: 20px;
+            padding: 20px;
+            background: #F08080;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeIn 2s forwards; /* Fade-in animation */
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .car-info img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .car-info img:hover {
+            transform: scale(1.05); /* Zoom-in effect on hover */
+        }
+
+        .car-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .car-info ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .car-info li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .car-info .labels {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .car-info .info {
+            color: #555;
+        }
+
+        .car-info .info.blinking {
+            animation: blinkingText 1.5s infinite;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #007bff;
+            color: #fff;
+            position: relative;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background: #74ebd5; }
+            50% { background: #ACB6E5; }
+            100% { background: #74ebd5; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes blinkingText {
+            0% { color: #FF5733; } /* Color 1 */
+            25% { color: #33FF57; } /* Color 2 */
+            50% { color: #3357FF; } /* Color 3 */
+            75% { color: #FF33A1; } /* Color 4 */
+            100% { color: #FF5733; } /* Back to Color 1 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Car Details</h1>
+    </header>
+
+    <div class="car-info" id="car-info"></div>
+
+    <footer>
+        <p>Address: Old Indur, Indur,<br> Dharmapuri to Pennagaram Main Road,<br> Dharmapuri-636803</p>
+        <p>Mobile No: +91 93604 18220, +91 9791664146</p>
+        
+        <p>Email: <a href="mailto:moulicartravels@gmail.com">moulicartravels@gmail.com</a></p>
+        <p><a href="blog.html">Back to Cars</a></p>
+    </footer>
+
+    <script>
+        // Function to get car details from URL parameters
+        function getCarDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const car = urlParams.get('car');
+            let carDetails = '';
+
+            if (car === 'Ertiga') {
+                carDetails = `
+                    <h3>Mahindra Xylo</h3>
+                    <img src="https://i.ibb.co/bmWvHbr/car.png" alt="Mahindra Xylo">
+                    <ul>
+                        <li><span class="labels">Car Name:</span> <span class="info">Mahindra Xylo</span></li>
+                        <li><span class="labels">Car Color:</span> <span class="info"> White</span></li>
+                        <li><span class="labels">Car Specification:</span> <span class="info"> without AC</span></li>
+                        <li><span class="labels">Car Seats:</span> <span class="info">7 Seater</span></li>
+                    </ul>
+                `;
+            } else if (car === 'Nexon') {
+                carDetails = `
+                    <h3>Tata Nexon</h3>
+                    <img src="https://i.ibb.co/HPXDCg3/1.png" alt="Tata Nexon">
+                    <ul>
+                        <li><span class="labels">Car Name:</span> <span class="info">Tata Nexon</span></li>
+                        <li><span class="labels">Car Color:</span> <span class="info">Olive Green</span></li>
+                        <li><span class="labels">Car Specification:</span> <span class="info">AC and without AC</span></li>
+                         <li><span class="labels">Car Seats:</span> <span class="info">5 Seater</span></li>
+                    </ul>
+                `;
+            }
+
+            document.getElementById('car-info').innerHTML = carDetails;
+        }
+
+        // Call the function to display car details on page load
+        window.onload = getCarDetails;
+    </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1517&q=80');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+/* Header and navigation styles */
+header {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+nav {
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding: 5px;
+    border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover {
+    color: #f0a500;
+    border-bottom: 2px solid #f0a500;
+}
+
+/* Blog post styles */
+#blog-posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.car {
+    background: white;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, border 0.3s ease;
+    border: 5px solid transparent; /* Initial border */
+    position: relative;
+    width: 300px; /* Fixed width for uniformity */
+}
+
+.car:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    border: 5px solid #007bff; /* Change border color on hover */
+}
+
+.car:hover::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #ff6b6b, #f7d94c, #6bff6b, #6bb3ff);
+    z-index: -1; /* Place behind the car */
+    animation: borderAnimation 3s infinite alternate; /* Colorful border animation */
+}
+
+@keyframes borderAnimation {
+    0% { background: #ff6b6b; }
+    25% { background: #f7d94c; }
+    50% { background: #6bff6b; }
+    75% { background: #6bb3ff; }
+    100% { background: #ff6b6b; }
+}
+
+.car img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Footer styles */
+footer {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+    border-top: 3px solid #0056b3;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .car {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+    }
+
+    .blog-post h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    nav ul li a {
+        font-size: 0.9em;
+    }
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding: 5px;
+    border-bottom: 2px solid transparent;
+}
+
+/* Increase the font size of the nav bar items on mobile screens */
+@media (max-width: 768px) {
+    nav ul li a {
+        font-size: 1.1em; /* Increase font size on tablets and small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li a {
+        font-size: 1.1em; /* Further increase font size on very small screens */
+    }
+}
